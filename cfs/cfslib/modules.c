@@ -26,8 +26,6 @@
 #include "modules.h"
 #include <dlfcn.h>
 
-#define MODULE_DIR "/usr/lib/cfs/"
-
 struct cnfmodule *cnfmodules = NULL;
 
 int register_cnfmodule(struct cnfmodule *cm, struct cnfnode *opt_root)
@@ -50,13 +48,13 @@ struct cnfmodule *find_cnfmodule(const char *name)
   return NULL;
 }
 
-int loadmodule(struct cnfmodule *cm, struct cnfnode *opt_root){
+int loadmodule(char * module_dir, char * name, struct cnfnode *opt_root){
     char buf[1024];
     int ret;
     void * handle;
     void (*reghandle)(struct cnfnode *);
     
-    snprintf(buf, 1024, "%s/%s.so", MODULE_DIR, cm->name);
+    snprintf(buf, 1024, "%s/lib%s.so", module_dir, name);
     handle = dlopen(buf, RTLD_LAZY);
     if(!handle)
         return -1;

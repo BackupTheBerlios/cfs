@@ -32,3 +32,4 @@ struct cnfmodule
 
 int register_cnfmodule(struct cnfmodule *cm, struct cnfnode *opt_root);
 struct cnfmodule *find_cnfmodule(const char *name);
+int loadmodule(char * module_dir, char * name, struct cnfnode *opt_root);

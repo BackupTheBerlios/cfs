@@ -27,14 +27,13 @@
 
 #include "strutils.h"
 #include "nodes.h"
-//#include "lines.h"
 #include "entry.h"
 #include "modules.h"
+#include "config.h"
 
-struct cnfmodule * reg(struct cnfnode *);
-
-//#include "ifupdown.h"
-//#include "shell.h"
+#ifndef MODULE_DIR
+#	define MODULE_DIR "/usr/lib/cfs"
+#endif
 
 FILE *open_file_or_exit(const char *fname, const char *mode)
 {
@@ -161,11 +160,7 @@ int main(int argc, char *argv[])
     char *action = argv[optind];
     struct cnfmodule *module;
     
-/*    register_ifupdown(opt_root);
-    register_shell(opt_root);
-    register_table(opt_root);
-    register_pair(opt_root);*/
-    reg(opt_root);    
+    loadmodule(MODULE_DIR,modname,opt_root);
 
     module = find_cnfmodule(modname);
     if(!module){

@@ -1,6 +1,6 @@
 INCLUDE=-I ../../include/ -I ../../cfslib/
 
-:lib phpini : phpini.c phpini_main.c phpini_save.c
+:dll phpini : phpini.c phpini_main.c phpini_save.c
 
 phpini.c:
     :system flex -ophpini.c phpini.l
