@@ -1,0 +1,16 @@
+:child cfslib/main.aap
+:child interfaces/fuse/main.aap
+INCLUDE = -I ./include/ -I ./cfslib/ -I ./bstring/ -I ./interfaces/fuse/
+DEBUG=yes
+
+INTERFACES=fuse
+
+all: libcfs
+
+interfaces-all {virtual}: $*INTERFACES
+
+LIBS=-L ./cfslib/ -L ./parsers/phpini/ -lcfs -lphpini -ldl
+LDFLAGS=-L ./cfslib/ -L ./interfaces/fuse/ 
+
+:program config : interfaces/cmdline/llconf.c
+

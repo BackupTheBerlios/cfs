@@ -1,0 +1,7 @@
+INCLUDE= -I ../include/ -I ./
+DEBUG=yes
+
+libcfs {virtual}: cfs
+
+:dll cfs : entry.c nodes.c strutils.c modules.c
+:lib cfs : entry.c nodes.c strutils.c modules.c

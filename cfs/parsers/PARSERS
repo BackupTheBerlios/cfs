@@ -1,0 +1,1 @@
+Parsers either return a new ccontext struct or NULL (on error).

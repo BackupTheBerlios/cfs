@@ -1,0 +1,6 @@
+INCLUDE = -I ../../bstring/ -I ../../include/ -I ../../cfslib/
+
+fuse {virtual}: cfsfuse
+
+:lib cfsfuse : fuse_interface.c
+
