@@ -24,6 +24,7 @@ struct cnfmodule
 {
   struct cnfmodule *next;
   char *name;
+  char **aliasses;
   char *default_file;
   struct cnfnode *(*parser)(FILE *fptr);
   int (*unparser)(FILE *fptr, struct cnfnode *cn_root);

@@ -25,10 +25,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#include "strutils.h"
-#include "nodes.h"
-#include "entry.h"
-#include "modules.h"
+#include "cfs.h"
 #include "config.h"
 
 #ifndef MODULE_DIR
@@ -116,6 +113,7 @@ int main(int argc, char *argv[])
   char *modname = NULL;
   struct cnfnode *opt_root = NULL;
   int exit_code = 0;
+  int showhidden = 0;
 
   if(argc > 1){
     modname = argv[1];
@@ -127,7 +125,7 @@ int main(int argc, char *argv[])
   while(1){
     int c;
 
-    c = getopt(argc, argv, "i:o:f:O:");
+    c = getopt(argc, argv, "i:o:f:hO:");
 
     if (c == -1)
       break;
@@ -135,6 +133,9 @@ int main(int argc, char *argv[])
     switch(c){
     case 'i':
       fname_in = optarg;
+      break;
+    case 'h':
+      showhidden = 1;
       break;
     case 'o':
       fname_out = optarg;
@@ -165,6 +166,7 @@ int main(int argc, char *argv[])
     module = find_cnfmodule(modname);
     if(!module){
       fprintf(stderr, "no module with name '%s' found.\n", modname);
+      exit(1);
       exit_code = 1;
     }
       
@@ -188,7 +190,7 @@ int main(int argc, char *argv[])
 
     if(strcmp(action, "dump") == 0){
 
-      dump_nodes(cn_root, 0);
+      dump_nodes(cn_root, 0,showhidden);
 
     }else if(strcmp(action, "get") == 0){
 

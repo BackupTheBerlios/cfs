@@ -2,9 +2,9 @@
 #define CFS_H
 
 #include <stdio.h>
-#include "nodes.h"
-#include "entry.h"
-#include "modules.h"
+#include "../cfslib/nodes.h"
+#include "../cfslib/entry.h"
+#include "../cfslib/modules.h"
 
 typedef struct cnfnode * cfile;
 

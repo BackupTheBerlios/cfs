@@ -23,7 +23,8 @@
 
 #include "nodes.h"
 
-struct cnfnode *create_cnfnode(const char *name)
+
+struct cnfnode *cnfnode_create(const char *name)
 {
   struct cnfnode *cn = NULL;
 
@@ -108,12 +109,12 @@ struct cnfnode *find_node(struct cnfnode *cn_list, const char *name)
   return NULL;
 }
 
-void dump_nodes(struct cnfnode *cn_root, int level)
+void dump_nodes(struct cnfnode *cn_root, int level, int showhidden)
 {
   int i;
   struct cnfnode *cn;
 
-  if(cn_root->name && cn_root->name[0] != '.'){
+  if(showhidden || (cn_root->name && cn_root->name[0] != '.')){
       for(i = 0; i < level; i++)
 	putchar('\t');
       printf("%s", cn_root->name);
@@ -123,6 +124,6 @@ void dump_nodes(struct cnfnode *cn_root, int level)
   }
 
   for(cn = cn_root->first_child; cn; cn = cn->next)
-    dump_nodes(cn, level+1);
+    dump_nodes(cn, level+1,showhidden);
 }
 
