@@ -45,7 +45,13 @@ ESCAPE \\.
 
 %%
 
-<INITIAL>"#" 			BEGIN(COMMENT);
+<INITIAL>"#" 	{
+    cfile fd;
+    fd = add_entry(".comment");
+    curnode = fd;
+    
+    BEGIN(COMMENT);
+}
 
 <INITIAL>{VARIABLE}+	{
     cfile f;
@@ -58,11 +64,12 @@ ESCAPE \\.
 
 <COMMENT>{
     {NONNEWLINE}+ 	{
-	    cfile fd;
-	    fd = add_entry(".comment");
-	    cnfnode_setval(fd, yytext);
+	    cnfnode_setval(curnode, yytext);
     } 
-    {NEWLINE}		BEGIN(INITIAL);
+    {NEWLINE}		{ 
+	curnode = curnode->parent;
+	BEGIN(INITIAL);
+    }
     <<EOF>>		yyterminate();
 }
 
@@ -80,24 +87,25 @@ ESCAPE \\.
     }
 }	
 
-<INITIAL>"</"{VARIABLE}+">" {
+<INITIAL>"</"{VARIABLE}+">"{WHITESPACE}*{NEWLINE} {
     curnode = curnode->parent;
     if(!curnode)
         yyterminate(); /* problem, no current node left */
 }
 
-<INITIAL>"<"{WHITESPACE}*{VARIABLE}+ {
+<INITIAL>"<"{WHITESPACE}*{VARIABLE}+{WHITESPACE}* {
     cfile f;
-    yytext++;
+    yytext++;yyleng--;
     TRIM_WHITESPACE
-    f = create_cnfnode(yytext);
+    f = cnfnode_create(yytext);
     append_node(curnode,f);
     curnode = f;
+    add_entry(".whitespace"); // add empty whitespace, trick to force interpreting as directory
     BEGIN(SECTION);
 }
 
 <SECTION>{
-    ">" BEGIN(INITIAL);
+    {WHITESPACE}*">"{WHITESPACE}*{NEWLINE} BEGIN(INITIAL);
     [^>]+	cnfnode_appendval(curnode,yytext);
 }
 

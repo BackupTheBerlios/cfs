@@ -361,12 +361,13 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[38] =
+static yyconst flex_int16_t yy_accept[46] =
     {   0,
         0,    0,    0,    0,    0,    0,    0,    0,   17,   15,
        13,   14,   14,    1,    2,   15,    3,    4,    5,    5,
-        8,    5,   12,   11,   13,   14,    2,    0,   10,    0,
-        3,    5,    6,   12,    0,    9,    0
+        8,    5,   12,   12,   16,   13,   14,    2,    0,   10,
+        0,    3,    5,    6,   12,   12,    0,    0,   11,   10,
+        0,    0,    0,    9,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -403,49 +404,59 @@ static yyconst flex_int32_t yy_ec[256] =
 
 static yyconst flex_int32_t yy_meta[11] =
     {   0,
-        1,    1,    2,    2,    1,    1,    1,    1,    3,    1
+        1,    2,    3,    3,    1,    1,    1,    1,    4,    1
     } ;
 
-static yyconst flex_int16_t yy_base[45] =
+static yyconst flex_int16_t yy_base[55] =
     {   0,
-        0,    0,    8,   10,   13,   22,   25,   22,   30,   62,
-       27,    0,    0,   62,   22,   31,    0,   62,    0,    0,
-       62,   36,    0,   62,   25,    0,   16,   14,   14,   13,
-        0,    0,   62,    0,   35,   62,   62,   44,   47,   50,
-       16,   53,   56,   59
+        0,    0,    8,   10,   13,   22,   31,   39,   37,   96,
+       34,    0,    0,   96,   29,   47,    0,   96,    0,    0,
+       96,   52,    0,   55,   32,   29,    0,   24,   22,   26,
+       21,    0,    0,   96,    0,    0,   20,    0,   96,   19,
+       59,   18,   17,   96,   96,   68,   72,   76,   15,   80,
+       84,   88,   90,   92
     } ;
 
-static yyconst flex_int16_t yy_def[45] =
+static yyconst flex_int16_t yy_def[55] =
     {   0,
-       37,    1,   38,   38,   39,   39,   40,   40,   37,   37,
-       37,   41,   41,   37,   37,   37,   42,   37,   43,   43,
-       37,   43,   44,   37,   37,   41,   37,   16,   37,   37,
-       42,   43,   37,   44,   37,   37,    0,   37,   37,   37,
-       37,   37,   37,   37
+       45,    1,   46,   46,   47,   47,   48,   48,   45,   45,
+       45,   49,   49,   45,   45,   45,   50,   45,   51,   51,
+       45,   51,   52,   52,   53,   45,   49,   45,   16,   29,
+       45,   50,   51,   45,   52,   24,   53,   37,   45,   45,
+       45,   54,   54,   45,    0,   45,   45,   45,   45,   45,
+       45,   45,   45,   45
     } ;
 
-static yyconst flex_int16_t yy_nxt[73] =
+static yyconst flex_int16_t yy_nxt[107] =
     {   0,
        10,   11,   12,   13,   14,   15,   10,   16,   10,   10,
-       18,   18,   18,   18,   20,   21,   21,   26,   35,   29,
-       37,   27,   22,   20,   21,   21,   25,   27,   25,   37,
-       24,   22,   28,   24,   37,   37,   29,   30,   33,   33,
-       35,   37,   37,   36,   17,   17,   17,   19,   19,   19,
-       23,   23,   23,   31,   37,   31,   32,   37,   32,   34,
-       34,    9,   37,   37,   37,   37,   37,   37,   37,   37,
-       37,   37
+       18,   18,   18,   18,   20,   21,   21,   27,   43,   43,
+       40,   38,   22,   20,   21,   21,   41,   40,   45,   28,
+       26,   22,   24,   38,   28,   26,   45,   45,   45,   25,
+       24,   45,   45,   45,   45,   45,   45,   25,   29,   45,
+       45,   45,   30,   31,   34,   34,   36,   45,   45,   45,
+       45,   45,   45,   37,   41,   45,   45,   42,   17,   17,
+       17,   17,   19,   19,   19,   19,   23,   23,   23,   23,
+       32,   32,   45,   32,   33,   33,   45,   33,   35,   35,
+       35,   39,   39,   44,   44,    9,   45,   45,   45,   45,
+
+       45,   45,   45,   45,   45,   45
     } ;
 
-static yyconst flex_int16_t yy_chk[73] =
+static yyconst flex_int16_t yy_chk[107] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        3,    3,    4,    4,    5,    5,    5,   41,   30,   29,
-       28,   27,    5,    6,    6,    6,   25,   15,   11,    9,
-        8,    6,   16,    7,    0,    0,   16,   16,   22,   22,
-       35,    0,    0,   35,   38,   38,   38,   39,   39,   39,
-       40,   40,   40,   42,    0,   42,   43,    0,   43,   44,
-       44,   37,   37,   37,   37,   37,   37,   37,   37,   37,
-       37,   37
+        3,    3,    4,    4,    5,    5,    5,   49,   43,   42,
+       40,   37,    5,    6,    6,    6,   31,   30,   29,   28,
+       26,    6,    7,   25,   15,   11,    9,    0,    0,    7,
+        8,    0,    0,    0,    0,    0,    0,    8,   16,    0,
+        0,    0,   16,   16,   22,   22,   24,    0,    0,    0,
+        0,    0,    0,   24,   41,    0,    0,   41,   46,   46,
+       46,   46,   47,   47,   47,   47,   48,   48,   48,   48,
+       50,   50,    0,   50,   51,   51,    0,   51,   52,   52,
+       52,   53,   53,   54,   54,   45,   45,   45,   45,   45,
+
+       45,   45,   45,   45,   45,   45
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -495,7 +506,7 @@ static void whitespace(char * data){
 
 
 
-#line 499 "apache.c"
+#line 510 "apache.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -652,7 +663,7 @@ YY_DECL
 #line 46 "apache.l"
 
 
-#line 656 "apache.c"
+#line 667 "apache.c"
 
 	if ( (yy_init) )
 		{
@@ -705,13 +716,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 38 )
+				if ( yy_current_state >= 46 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 62 );
+		while ( yy_base[yy_current_state] != 96 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -738,11 +749,17 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 48 "apache.l"
-BEGIN(COMMENT);
+{
+    cfile fd;
+    fd = add_entry(".comment");
+    curnode = fd;
+    
+    BEGIN(COMMENT);
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 50 "apache.l"
+#line 56 "apache.l"
 {
     cfile f;
     f = create_cnfnode(yytext);
@@ -754,28 +771,29 @@ YY_RULE_SETUP
 
 case 3:
 YY_RULE_SETUP
-#line 60 "apache.l"
+#line 66 "apache.l"
 {
-	    cfile fd;
-	    fd = add_entry(".comment");
-	    cnfnode_setval(fd, yytext);
+	    cnfnode_setval(curnode, yytext);
     } 
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 65 "apache.l"
-BEGIN(INITIAL);
+#line 69 "apache.l"
+{ 
+	curnode = curnode->parent;
+	BEGIN(INITIAL);
+    }
 	YY_BREAK
 case YY_STATE_EOF(COMMENT):
-#line 66 "apache.l"
+#line 73 "apache.l"
 yyterminate();
 	YY_BREAK
 
 
 case 5:
 YY_RULE_SETUP
-#line 70 "apache.l"
+#line 77 "apache.l"
 {
         TRIM_NEWLINE
         TRIM_WHITESPACE
@@ -785,18 +803,18 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 75 "apache.l"
+#line 82 "apache.l"
 /*ignore*/
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 76 "apache.l"
+#line 83 "apache.l"
 /*ignore*/
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 77 "apache.l"
+#line 84 "apache.l"
 {
         curnode = curnode->parent;    
         BEGIN(INITIAL);
@@ -804,8 +822,9 @@ YY_RULE_SETUP
 	YY_BREAK
 
 case 9:
+/* rule 9 can match eol */
 YY_RULE_SETUP
-#line 83 "apache.l"
+#line 90 "apache.l"
 {
     curnode = curnode->parent;
     if(!curnode)
@@ -814,52 +833,54 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 89 "apache.l"
+#line 96 "apache.l"
 {
     cfile f;
-    yytext++;
+    yytext++;yyleng--;
     TRIM_WHITESPACE
-    f = create_cnfnode(yytext);
+    f = cnfnode_create(yytext);
     append_node(curnode,f);
     curnode = f;
+    add_entry(".whitespace"); // add empty whitespace, trick to force interpreting as directory
     BEGIN(SECTION);
 }
 	YY_BREAK
 
 case 11:
+/* rule 11 can match eol */
 YY_RULE_SETUP
-#line 100 "apache.l"
+#line 108 "apache.l"
 BEGIN(INITIAL);
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 101 "apache.l"
+#line 109 "apache.l"
 cnfnode_appendval(curnode,yytext);
 	YY_BREAK
 
 case 13:
 YY_RULE_SETUP
-#line 104 "apache.l"
+#line 112 "apache.l"
 whitespace(yytext);
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 105 "apache.l"
+#line 113 "apache.l"
 whitespace(yytext);
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 106 "apache.l"
+#line 114 "apache.l"
 /* throw a dirty error */
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 110 "apache.l"
+#line 118 "apache.l"
 ECHO;
 	YY_BREAK
-#line 863 "apache.c"
+#line 884 "apache.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(VARIABLE):
 case YY_STATE_EOF(SECTION):
@@ -1145,7 +1166,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 38 )
+			if ( yy_current_state >= 46 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1173,11 +1194,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 38 )
+		if ( yy_current_state >= 46 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 37);
+	yy_is_jam = (yy_current_state == 45);
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1827,7 +1848,7 @@ void yyfree (void * ptr )
 #undef YY_DECL_IS_OURS
 #undef YY_DECL
 #endif
-#line 110 "apache.l"
+#line 118 "apache.l"
 
 
 

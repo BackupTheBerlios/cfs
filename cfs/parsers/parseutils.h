@@ -20,3 +20,9 @@ static inline writeline(FILE *f, char *line){
     strcat(tmp, "\n");
     fwrite(tmp,strlen(line)+1,1,f);
 }
+
+static char * nullsafe(char * text){
+    if(text == NULL)
+	return "";
+    return text;
+}

@@ -1,10 +1,14 @@
 INCLUDE=-I ../../include/ -I ../../cfslib/
 
-:dll phpini : phpini.c phpini_main.c phpini_save.c
+phpini {virtual}: phpinilib
+    :copy ./*.so ../libphpini.so
 
-phpini.c:
+:dll phpinilib : phpini.c phpini_main.c phpini_save.c
+
+phpini.c {virtual}:
     :system flex -ophpini.c phpini.l
     
-
-
+clean:	
+    :del {f} phpini.c
+    :del {f} ./*.so
 

@@ -1,9 +1,16 @@
 INCLUDE=-I ../../include/ -I ../../cfslib/
 
-:dll apache : apache.c phpini_main.c phpini_save.c
+apache {virtual}: apachelib
+    :copy ./*.so ../libapache.so
+
+:dll apachelib : apache.c apache_main.c apache_save.c
 
 apache.c {virtual}:
     :system flex -oapache.c apache.l
+    
+clean:
+    :del {f} apache.c
+    :del {f} ./*.so
     
 
 

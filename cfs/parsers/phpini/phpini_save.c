@@ -1,6 +1,6 @@
 #include <string.h>
 #include "cfs.h"
-#include "parseutils.h"
+#include "../parseutils.h"
 
 static int phpini_save_recurs(FILE * f, cfile root, int level);
 
@@ -13,15 +13,16 @@ static int phpini_save_recurs(FILE * f, cfile root, int level){
     cur = root->first_child;
     
     while(cur){
-	if(cur->value){
-	    if(!strcmp(cur->name, ".comment"))
-		fprintf(f,";%s\n",cur->value);
+	if(!cur->first_child){
+            if(!strcmp(cur->name, ".comment"))
+	        fprintf(f,";%s\n",nullsafe(cur->value));
 	    else if (!strcmp(cur->name, ".whitespace"))
-		fprintf(f,"%s",cur->value);
+		fprintf(f,"%s",nullsafe(cur->value));
 	    else
-	    	fprintf(f,"%s = \"%s\"\n",cur->name,cur->value);
+		fprintf(f,"%s = %s\n",cur->name,nullsafe(cur->value));
+	} else {
+	    fprintf(f,"[%s]\n",cur->name);
 	}
-	//else	
 	
 	if(cur->first_child)
 	    phpini_save_recurs(f,cur,level+1);

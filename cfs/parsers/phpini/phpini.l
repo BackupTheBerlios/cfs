@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cfs.h"
-#include "parseutils.h"
+#include "../parseutils.h"
 
-static char * curvar = NULL;
+static cfile curvar = NULL;
 static cfile rootnode;
 static cfile section = NULL;
 
@@ -39,7 +39,7 @@ static void whitespaceadd(char * text){
 DIGIT [0-9]
 NONNEWLINE [^\n\r]
 NEWLINE [\n\r]
-VARIABLE [a-zA-Z0-9_-]
+VARIABLE [^=\n\r\t;|&~()!"\[]
 WHITESPACE [ \t]
 NONQUOTE [^\"\t\r\n ][^\"\r\n]*
 
@@ -48,22 +48,27 @@ ESCAPE \\.
 
 %%
 
-";" 			BEGIN(COMMENT);
+";" {
+    curvar = add_entry(".comment");
+    BEGIN(COMMENT);
+}
 
 <COMMENT>{
     {NONNEWLINE}+ 	{
-	cfile fd;
-	fd = add_entry(".comment");
-	cnfnode_setval(fd, yytext);
+	cnfnode_setval(curvar, yytext);
     } 
     {NEWLINE}		BEGIN(INITIAL);
     <<EOF>>		yyterminate();
 }
 
-{VARIABLE}+	SETVAR(yytext); BEGIN(VARIABLE);
+{VARIABLE}+	{	
+    TRIM_WHITESPACE    
+    curvar = add_entry(yytext);
+    BEGIN(VARIABLE);
+}
 
 <VARIABLE>{
-    "="			BEGIN(VARIABLE_IS);
+    "="{WHITESPACE}*	BEGIN(VARIABLE_IS);
     {WHITESPACE} 	/* ignore, can't respresent this */
     {NEWLINE}		BEGIN(INITIAL);
     .			/* throw a dirty error */
@@ -81,24 +86,19 @@ ESCAPE \\.
 <VARIABLE_IS>{
     {WHITESPACE}+ /*ignore*/
     
-    "\""[^\r\n"]*"\""{NEWLINE}+ { 
-	struct cnfnode * fd;
+    "\""[^\r\n"]*"\""{WHITESPACE}*{NEWLINE}+ { 
+	cfile fd;
 	TRIM_NEWLINE
 	TRIM_WHITESPACE 
-
-	yytext++; yyleng--; 
-	yytext[yyleng-1] = '\0'; 
-	fd = add_entry(curvar);
-	cnfnode_setval(fd,yytext);
+	cnfnode_setval(curvar,yytext);
 	BEGIN(INITIAL);
     }
     
     {NONQUOTE}	{
-	struct cnfnode * fd;
+	cfile fd;
 	TRIM_WHITESPACE 
 	TRIM_NEWLINE
-	fd = add_entry(curvar);
-	cnfnode_setval(fd,yytext);
+	cnfnode_setval(curvar,yytext);
     }
     {NEWLINE}	BEGIN(INITIAL);
 }

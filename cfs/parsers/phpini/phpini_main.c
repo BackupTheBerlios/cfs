@@ -4,6 +4,7 @@
 
 struct cnfmodule phpini = {
     name: "phpini",
+    aliasses: { "ini","php",NULL },
     default_file: "./test.cfg",
     parser: phpini_parse,
     unparser: phpini_save
