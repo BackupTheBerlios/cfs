@@ -1,16 +1,12 @@
 INCLUDE=-I ../../include/ -I ../../cfslib/
 
-x {virtual}: xlib
-    :copy ./*.so ../libx.so
+apache {virtual}: apachelib
+    :copy ./*.so ../libapache.so
 
-:dll xlib : x.c x_main.c x_save.c
+:dll apachelib : apache.c apache_main.c apache_save.c
 
-x.c {virtual}:
-    :system flex -ox.c x.l
-    
-clean:
-    :del {f} x.c
-    :del {f} ./*.so
+apache.c {virtual}:
+    :system flex -oapache.c apache.l
     
 clean:
     :del {f} apache.c
