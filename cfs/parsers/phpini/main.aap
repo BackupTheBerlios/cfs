@@ -2,9 +2,8 @@ INCLUDE=-I ../../include/ -I ../../cfslib/
 
 :lib phpini : phpini.c phpini_main.c phpini_save.c
 
-phpini.c {virtual}:
-    :del phpini.c
-    :system flex -o phpini.c phpini.l
+phpini.c:
+    :system flex -ophpini.c phpini.l
     
 
 
