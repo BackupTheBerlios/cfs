@@ -1,10 +1,9 @@
 INCLUDE=-I ../../include/ -I ../../cfslib/
 
-:lib ifupdown : ifupdown.c ifupdown_main.c ifupdown_save.c
+:dll ifupdown : ifupdown.c ifupdown_main.c ifupdown_save.c
 
-ifupdown.c {virtual}:
-    :del ifupdown.c
-    :system flex -o ifupdown.c ifupdown.l
+ifupdown.c:
+    :system flex -oifupdown.c ifupdown.l
     
 
 

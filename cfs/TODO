@@ -1,0 +1,11 @@
+- indexed filenames (eg. foo[1] foo[2])
+- parser redirecting (eg. php -> ini)
+* dynamic parser loading 
+* parsers for: irc/apache/ini/net-interfaces/cron/passwd/group/...
+- debianize this
+- documentation
+
+
+- = todo
+* = working on it
++ = finished
