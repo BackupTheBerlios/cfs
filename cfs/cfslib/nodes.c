@@ -113,12 +113,14 @@ void dump_nodes(struct cnfnode *cn_root, int level)
   int i;
   struct cnfnode *cn;
 
-  for(i = 0; i < level; i++)
-    putchar('\t');
-  printf("%s", cn_root->name);
-  if(cn_root->value)
-    printf(" = '%s'", cn_root->value);
-  putchar('\n');
+  if(cn_root->name && cn_root->name[0] != '.'){
+      for(i = 0; i < level; i++)
+	putchar('\t');
+      printf("%s", cn_root->name);
+      if(cn_root->value)
+        printf(" = '%s'", cn_root->value);
+      putchar('\n');
+  }
 
   for(cn = cn_root->first_child; cn; cn = cn->next)
     dump_nodes(cn, level+1);

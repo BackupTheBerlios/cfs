@@ -18,6 +18,12 @@ static struct cnfnode * add_entry(char * name){
     return newnode;
 }
 
+static void whitespaceadd(char * text){
+    cfile fd;
+    fd = add_entry(".whitespace");
+    cnfnode_setval(fd,text);    
+}
+
 #define SETVAR(s) \
     if(curvar) \
         free(curvar); \
@@ -50,7 +56,7 @@ ESCAPE \\.
 	fd = add_entry(".comment");
 	cnfnode_setval(fd, yytext);
     } 
-    {NEWLINE}+		BEGIN(INITIAL);
+    {NEWLINE}		BEGIN(INITIAL);
     <<EOF>>		yyterminate();
 }
 
@@ -58,8 +64,8 @@ ESCAPE \\.
 
 <VARIABLE>{
     "="			BEGIN(VARIABLE_IS);
-    {WHITESPACE} 	/*ignore*/
-    {NEWLINE}+		BEGIN(INITIAL);
+    {WHITESPACE} 	/* ignore, can't respresent this */
+    {NEWLINE}		BEGIN(INITIAL);
     .			/* throw a dirty error */
 }	
 
@@ -94,11 +100,12 @@ ESCAPE \\.
 	fd = add_entry(curvar);
 	cnfnode_setval(fd,yytext);
     }
-    {NEWLINE}+	BEGIN(INITIAL);
+    {NEWLINE}	BEGIN(INITIAL);
 }
 
-{WHITESPACE}+	/* ignore happily */
-.		/* throw a dirty error */
+<INITIAL>{WHITESPACE}+	whitespaceadd(yytext);
+<INITIAL>{NEWLINE}+	whitespaceadd(yytext);
+.		yyterminate();
 
 %%
 

@@ -1,14 +1,14 @@
 #include <stdlib.h>
 #include "cfs.h"
-#include "phpini.h"
+#include "apache.h"
 
-struct cnfmodule phpini = {
-    name: "phpini",
+struct cnfmodule apache = {
+    name: "apache",
     default_file: "./test.cfg",
-    parser: phpini_parse,
-    unparser: phpini_save
+    parser: apache_parse,
+    unparser: apache_save
 };
 
 void reg(cfile opt_root){
-    register_cnfmodule(&phpini, opt_root);
+    register_cnfmodule(&apache, opt_root);
 }

@@ -2,15 +2,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cfs.h"
-#include "parseutils.h"
+#include "../parseutils.h"
 
 static cfile rootnode;
-static cfile curnode = NULL;
+static cfile curnode;
+
+static struct cnfnode * add_entry(char * name){
+    struct cnfnode * newnode;
+    newnode = create_cnfnode(name);
+    append_node(curnode, newnode);
+    return newnode;
+}
+
 
 #define SETVAR(s) \
     if(curvar) \
         free(curvar); \
     curvar = strdup(s); 
+    
+static void whitespace(char * data){
+    cfile fd;
+    fd = create_cnfnode(".whitespace");
+    cnfnode_setval(fd,data);
+    append_node(curnode,fd);
+}
 
 %}
 
@@ -40,8 +55,6 @@ ESCAPE \\.
     BEGIN(VARIABLE);
 }
 
-<INITIAL>{WHITESPACE}+	/* ignore happily */
-<INITIAL>.		        /* throw a dirty error */
 
 <COMMENT>{
     {NONNEWLINE}+ 	{
@@ -49,7 +62,7 @@ ESCAPE \\.
 	    fd = add_entry(".comment");
 	    cnfnode_setval(fd, yytext);
     } 
-    {NEWLINE}+		BEGIN(INITIAL);
+    {NEWLINE}		BEGIN(INITIAL);
     <<EOF>>		yyterminate();
 }
 
@@ -59,13 +72,12 @@ ESCAPE \\.
         TRIM_WHITESPACE
         cnfnode_appendval(curnode,yytext);
     }
-    "\"{NEWLINE}    /*ignore*/
+    "\\"{NEWLINE}    /*ignore*/
     {WHITESPACE}    /*ignore*/
-    {NEWLINE}+	{
+    {NEWLINE}	{
         curnode = curnode->parent;    
         BEGIN(INITIAL);
     }
-    .			/* throw a dirty error */
 }	
 
 <INITIAL>"</"{VARIABLE}+">" {
@@ -86,13 +98,18 @@ ESCAPE \\.
 
 <SECTION>{
     ">" BEGIN(INITIAL);
-    .    /* ignore */
+    [^>]+	cnfnode_appendval(curnode,yytext);
 }
+
+<INITIAL>{WHITESPACE}+	whitespace(yytext);
+<INITIAL>{NEWLINE}+	whitespace(yytext);
+<INITIAL>.		        /* throw a dirty error */
+
 
 
 %%
 
-struct cnfnode * phpini_parse(FILE * file){
+struct cnfnode * apache_parse(FILE * file){
     yyin = file;
     rootnode = create_cnfnode("(root)");
     curnode = rootnode;

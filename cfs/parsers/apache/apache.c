@@ -1,6 +1,6 @@
-#line 2 "phpini.c"
+#line 2 "apache.c"
 
-#line 4 "phpini.c"
+#line 4 "apache.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -361,13 +361,12 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[43] =
+static yyconst flex_int16_t yy_accept[38] =
     {   0,
         0,    0,    0,    0,    0,    0,    0,    0,   17,   15,
-       14,   16,    4,    1,   15,    2,    3,    8,    6,    7,
-        7,    5,   12,   10,   13,   16,   14,    4,    0,    2,
-        3,    7,   12,   10,   13,    0,    0,    0,   11,    0,
-        9,    0
+       13,   14,   14,    1,    2,   15,    3,    4,    5,    5,
+        8,    5,   12,   11,   13,   14,    2,    0,   10,    0,
+        3,    5,    6,   12,    0,    9,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -375,13 +374,13 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    4,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    1,    5,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    6,    1,    1,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    1,    7,    1,
-        8,    1,    1,    1,    6,    6,    6,    6,    6,    6,
+        1,    2,    1,    1,    5,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    6,    1,    7,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    1,    1,    8,
+        1,    9,    1,    1,    6,    6,    6,    6,    6,    6,
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        9,    1,   10,    1,    6,    1,    6,    6,    6,    6,
+        1,   10,    1,    1,    6,    1,    6,    6,    6,    6,
 
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
@@ -404,53 +403,49 @@ static yyconst flex_int32_t yy_ec[256] =
 
 static yyconst flex_int32_t yy_meta[11] =
     {   0,
-        1,    1,    2,    2,    3,    1,    1,    1,    4,    1
+        1,    1,    2,    2,    1,    1,    1,    1,    3,    1
     } ;
 
-static yyconst flex_int16_t yy_base[54] =
+static yyconst flex_int16_t yy_base[45] =
     {   0,
-        0,    0,    8,   10,   13,   20,   27,   31,   70,   73,
-       65,   73,   60,   73,    0,    0,    0,   73,   73,    0,
-        0,   73,    0,   60,    0,   39,   41,   36,   31,    0,
-        0,    0,    0,   38,    0,   22,    0,   35,    0,    0,
-       16,   73,   45,   49,   53,   57,   60,   23,   18,   64,
-       17,   68,   16
+        0,    0,    8,   10,   13,   22,   25,   22,   30,   62,
+       27,    0,    0,   62,   22,   31,    0,   62,    0,    0,
+       62,   36,    0,   62,   25,    0,   16,   14,   14,   13,
+        0,    0,   62,    0,   35,   62,   62,   44,   47,   50,
+       16,   53,   56,   59
     } ;
 
-static yyconst flex_int16_t yy_def[54] =
+static yyconst flex_int16_t yy_def[45] =
     {   0,
-       42,    1,   43,   43,   44,   44,   45,   45,   42,   42,
-       42,   42,   42,   42,   46,   47,   48,   42,   42,   49,
-       49,   42,   50,   42,   51,   52,   42,   42,   46,   47,
-       48,   49,   50,   42,   51,   52,   53,   46,   53,   38,
-       46,    0,   42,   42,   42,   42,   42,   42,   42,   42,
-       42,   42,   42
+       37,    1,   38,   38,   39,   39,   40,   40,   37,   37,
+       37,   41,   41,   37,   37,   37,   42,   37,   43,   43,
+       37,   43,   44,   37,   37,   41,   37,   16,   37,   37,
+       42,   43,   37,   44,   37,   37,    0,   37,   37,   37,
+       37,   37,   37,   37
     } ;
 
-static yyconst flex_int16_t yy_nxt[84] =
+static yyconst flex_int16_t yy_nxt[73] =
     {   0,
-       10,   11,   12,   10,   10,   13,   14,   10,   15,   10,
-       17,   17,   17,   17,   19,   20,   21,   39,   35,   32,
-       22,   19,   20,   21,   31,   38,   37,   22,   24,   25,
-       25,   26,   24,   25,   25,   26,   40,   41,   41,   34,
-       38,   28,   27,   37,   38,   16,   16,   16,   16,   18,
-       18,   18,   18,   23,   23,   23,   23,   29,   29,   29,
-       30,   34,   30,   30,   33,   28,   27,   33,   36,   42,
-       36,   36,    9,   42,   42,   42,   42,   42,   42,   42,
-       42,   42,   42
+       10,   11,   12,   13,   14,   15,   10,   16,   10,   10,
+       18,   18,   18,   18,   20,   21,   21,   26,   35,   29,
+       37,   27,   22,   20,   21,   21,   25,   27,   25,   37,
+       24,   22,   28,   24,   37,   37,   29,   30,   33,   33,
+       35,   37,   37,   36,   17,   17,   17,   19,   19,   19,
+       23,   23,   23,   31,   37,   31,   32,   37,   32,   34,
+       34,    9,   37,   37,   37,   37,   37,   37,   37,   37,
+       37,   37
     } ;
 
-static yyconst flex_int16_t yy_chk[84] =
+static yyconst flex_int16_t yy_chk[73] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        3,    3,    4,    4,    5,    5,    5,   53,   51,   49,
-        5,    6,    6,    6,   48,   41,   36,    6,    7,    7,
-        7,    7,    8,    8,    8,    8,   38,   38,   38,   34,
-       29,   28,   27,   26,   38,   43,   43,   43,   43,   44,
-       44,   44,   44,   45,   45,   45,   45,   46,   46,   46,
-       47,   24,   47,   47,   50,   13,   11,   50,   52,    9,
-       52,   52,   42,   42,   42,   42,   42,   42,   42,   42,
-       42,   42,   42
+        3,    3,    4,    4,    5,    5,    5,   41,   30,   29,
+       28,   27,    5,    6,    6,    6,   25,   15,   11,    9,
+        8,    6,   16,    7,    0,    0,   16,   16,   22,   22,
+       35,    0,    0,   35,   38,   38,   38,   39,   39,   39,
+       40,   40,   40,   42,    0,   42,   43,    0,   43,   44,
+       44,   37,   37,   37,   37,   37,   37,   37,   37,   37,
+       37,   37
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -467,41 +462,45 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "phpini.l"
-#line 2 "phpini.l"
+#line 1 "apache.l"
+#line 2 "apache.l"
 #include <stdio.h>
 #include <stdlib.h>
 #include "cfs.h"
-#include "parseutils.h"
+#include "../parseutils.h"
 
-static char * curvar = NULL;
 static cfile rootnode;
-static cfile section = NULL;
+static cfile curnode;
 
 static struct cnfnode * add_entry(char * name){
     struct cnfnode * newnode;
     newnode = create_cnfnode(name);
-    if(section)
-	append_node(section, newnode);
-    else 
-	append_node(rootnode, newnode);
+    append_node(curnode, newnode);
     return newnode;
 }
+
 
 #define SETVAR(s) \
     if(curvar) \
         free(curvar); \
     curvar = strdup(s); 
+    
+static void whitespace(char * data){
+    cfile fd;
+    fd = create_cnfnode(".whitespace");
+    cnfnode_setval(fd,data);
+    append_node(curnode,fd);
+}
 
 
 
 
-#line 500 "phpini.c"
+#line 499 "apache.c"
 
 #define INITIAL 0
 #define COMMENT 1
 #define VARIABLE 2
-#define VARIABLE_IS 3
+#define SECTION 3
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -650,10 +649,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 43 "phpini.l"
+#line 46 "apache.l"
 
 
-#line 657 "phpini.c"
+#line 656 "apache.c"
 
 	if ( (yy_init) )
 		{
@@ -706,13 +705,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 43 )
+				if ( yy_current_state >= 38 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 73 );
+		while ( yy_base[yy_current_state] != 62 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -738,129 +737,132 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 45 "phpini.l"
+#line 48 "apache.l"
 BEGIN(COMMENT);
 	YY_BREAK
-
 case 2:
 YY_RULE_SETUP
-#line 48 "phpini.l"
+#line 50 "apache.l"
 {
-	cfile fd;
-	fd = add_entry(".comment");
-	cnfnode_setval(fd, yytext);
-    } 
-	YY_BREAK
-case 3:
-/* rule 3 can match eol */
-YY_RULE_SETUP
-#line 53 "phpini.l"
-BEGIN(INITIAL);
-	YY_BREAK
-case YY_STATE_EOF(COMMENT):
-#line 54 "phpini.l"
-yyterminate();
-	YY_BREAK
-
-case 4:
-YY_RULE_SETUP
-#line 57 "phpini.l"
-SETVAR(yytext); BEGIN(VARIABLE);
-	YY_BREAK
-
-case 5:
-YY_RULE_SETUP
-#line 60 "phpini.l"
-BEGIN(VARIABLE_IS);
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
-#line 61 "phpini.l"
-/*ignore*/
-	YY_BREAK
-case 7:
-/* rule 7 can match eol */
-YY_RULE_SETUP
-#line 62 "phpini.l"
-BEGIN(INITIAL);
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
-#line 63 "phpini.l"
-/* throw a dirty error */
-	YY_BREAK
-
-case 9:
-/* rule 9 can match eol */
-YY_RULE_SETUP
-#line 66 "phpini.l"
-{
-    TRIM_WHITESPACE
-    TRIM_NEWLINE
-    yytext++; yyleng--;
-    yytext[yyleng-1] = '\0';
-    section = create_cnfnode(yytext);
-    append_node(rootnode,section);
+    cfile f;
+    f = create_cnfnode(yytext);
+    append_node(curnode,f);
+    curnode = f;
+    BEGIN(VARIABLE);
 }
 	YY_BREAK
 
-case 10:
+case 3:
 YY_RULE_SETUP
-#line 76 "phpini.l"
-/*ignore*/
-	YY_BREAK
-case 11:
-/* rule 11 can match eol */
-YY_RULE_SETUP
-#line 78 "phpini.l"
-{ 
-	struct cnfnode * fd;
-	TRIM_WHITESPACE 
-	TRIM_NEWLINE
-	yytext++; yyleng--; 
-	yytext[yyleng-1] = '\0'; 
-	fd = add_entry(curvar);
-	cnfnode_setval(fd,yytext);
-	BEGIN(INITIAL);
-    }
-	YY_BREAK
-case 12:
-YY_RULE_SETUP
-#line 89 "phpini.l"
+#line 60 "apache.l"
 {
-	struct cnfnode * fd;
-	TRIM_WHITESPACE 
-	TRIM_NEWLINE
-	fd = add_entry(curvar);
-	cnfnode_setval(fd,yytext);
-    }
+	    cfile fd;
+	    fd = add_entry(".comment");
+	    cnfnode_setval(fd, yytext);
+    } 
 	YY_BREAK
-case 13:
-/* rule 13 can match eol */
+case 4:
+/* rule 4 can match eol */
 YY_RULE_SETUP
-#line 96 "phpini.l"
+#line 65 "apache.l"
 BEGIN(INITIAL);
 	YY_BREAK
+case YY_STATE_EOF(COMMENT):
+#line 66 "apache.l"
+yyterminate();
+	YY_BREAK
 
-case 14:
+
+case 5:
 YY_RULE_SETUP
-#line 99 "phpini.l"
-/* ignore happily */
+#line 70 "apache.l"
+{
+        TRIM_NEWLINE
+        TRIM_WHITESPACE
+        cnfnode_appendval(curnode,yytext);
+    }
+	YY_BREAK
+case 6:
+/* rule 6 can match eol */
+YY_RULE_SETUP
+#line 75 "apache.l"
+/*ignore*/
+	YY_BREAK
+case 7:
+YY_RULE_SETUP
+#line 76 "apache.l"
+/*ignore*/
+	YY_BREAK
+case 8:
+/* rule 8 can match eol */
+YY_RULE_SETUP
+#line 77 "apache.l"
+{
+        curnode = curnode->parent;    
+        BEGIN(INITIAL);
+    }
+	YY_BREAK
+
+case 9:
+YY_RULE_SETUP
+#line 83 "apache.l"
+{
+    curnode = curnode->parent;
+    if(!curnode)
+        yyterminate(); /* problem, no current node left */
+}
+	YY_BREAK
+case 10:
+YY_RULE_SETUP
+#line 89 "apache.l"
+{
+    cfile f;
+    yytext++;
+    TRIM_WHITESPACE
+    f = create_cnfnode(yytext);
+    append_node(curnode,f);
+    curnode = f;
+    BEGIN(SECTION);
+}
+	YY_BREAK
+
+case 11:
+YY_RULE_SETUP
+#line 100 "apache.l"
+BEGIN(INITIAL);
+	YY_BREAK
+case 12:
+/* rule 12 can match eol */
+YY_RULE_SETUP
+#line 101 "apache.l"
+cnfnode_appendval(curnode,yytext);
+	YY_BREAK
+
+case 13:
+YY_RULE_SETUP
+#line 104 "apache.l"
+whitespace(yytext);
+	YY_BREAK
+case 14:
+/* rule 14 can match eol */
+YY_RULE_SETUP
+#line 105 "apache.l"
+whitespace(yytext);
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 100 "phpini.l"
+#line 106 "apache.l"
 /* throw a dirty error */
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 102 "phpini.l"
+#line 110 "apache.l"
 ECHO;
 	YY_BREAK
-#line 861 "phpini.c"
+#line 863 "apache.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(VARIABLE):
-case YY_STATE_EOF(VARIABLE_IS):
+case YY_STATE_EOF(SECTION):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1143,7 +1145,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 43 )
+			if ( yy_current_state >= 38 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1171,11 +1173,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 43 )
+		if ( yy_current_state >= 38 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 42);
+	yy_is_jam = (yy_current_state == 37);
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1825,13 +1827,14 @@ void yyfree (void * ptr )
 #undef YY_DECL_IS_OURS
 #undef YY_DECL
 #endif
-#line 102 "phpini.l"
+#line 110 "apache.l"
 
 
 
-struct cnfnode * phpini_parse(FILE * file){
+struct cnfnode * apache_parse(FILE * file){
     yyin = file;
     rootnode = create_cnfnode("(root)");
+    curnode = rootnode;
     if(yylex())
 	return NULL;
     else 

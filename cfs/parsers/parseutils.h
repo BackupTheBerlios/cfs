@@ -1,5 +1,5 @@
 #define TRIM_WHITESPACE \
-    while(*yytext==' ' || *yytext=='\t'){ \
+    while(*yytext && (*yytext==' ' || *yytext=='\t')){ \
 	yytext++; yyleng--; \
     } \
     while(*(yytext+yyleng-1)==' ' || *(yytext+yyleng-1)=='\t'){ \

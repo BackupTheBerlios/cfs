@@ -16,6 +16,8 @@ static int phpini_save_recurs(FILE * f, cfile root, int level){
 	if(cur->value){
 	    if(!strcmp(cur->name, ".comment"))
 		fprintf(f,";%s\n",cur->value);
+	    else if (!strcmp(cur->name, ".whitespace"))
+		fprintf(f,"%s",cur->value);
 	    else
 	    	fprintf(f,"%s = \"%s\"\n",cur->name,cur->value);
 	}
