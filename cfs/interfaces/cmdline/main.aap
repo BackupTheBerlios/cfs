@@ -1,0 +1,9 @@
+INCLUDE=-I ../../include -I ../../
+config {virtual}: cmdlineconfig libcfs
+    :copy ./cmdlineconfig ../../config
+
+clean:
+    :del ./cmdlineconfig
+    :del ../../config
+
+:program cmdlineconfig : llconf.c
